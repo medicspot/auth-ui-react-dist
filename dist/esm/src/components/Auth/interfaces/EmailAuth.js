@@ -66,20 +66,34 @@ function EmailAuth(_ref) {
         break;
 
       case 'sign_up':
+        console.log('We are here');
+        console.log({
+          redirectTo
+        });
+        let signUp;
+
+        if (redirectTo) {
+          signUp = supabaseClient.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: redirectTo
+            }
+          });
+        } else {
+          signUp = supabaseClient.auth.signUp({
+            email,
+            password
+          });
+        }
+
         const {
           data: {
             user: signUpUser,
             session: signUpSession
           },
           error: signUpError
-        } = yield supabaseClient.auth.signUp(Object.assign({
-          email,
-          password
-        }, redirectTo && {
-          options: {
-            emailRedirectTo: redirectTo
-          }
-        }));
+        } = yield signUp;
         if (signUpError) setError(signUpError.message); // Check if session is null -> email confirmation setting is turned on
         else if (signUpUser && !signUpSession) setMessage('Check your email for the confirmation link.');
         break;
