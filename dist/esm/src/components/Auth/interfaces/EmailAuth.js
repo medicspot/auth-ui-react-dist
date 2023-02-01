@@ -30,7 +30,8 @@ function EmailAuth(_ref) {
     redirectTo,
     magicLink,
     i18n,
-    appearance
+    appearance,
+    onSignUp
   } = _ref;
 
   var _a, _b, _c, _d, _e, _f, _g, _h, _j;
@@ -91,7 +92,10 @@ function EmailAuth(_ref) {
           error: signUpError
         } = yield signUp;
         if (signUpError) setError(signUpError.message); // Check if session is null -> email confirmation setting is turned on
-        else if (signUpUser && !signUpSession) setMessage('Check your email for the confirmation link.');
+        else if (signUpUser && !signUpSession) {
+          setMessage('Check your email for the confirmation link.');
+          onSignUp === null || onSignUp === void 0 ? void 0 : onSignUp();
+        }
         break;
     }
     /*

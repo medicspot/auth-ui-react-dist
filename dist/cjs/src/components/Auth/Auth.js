@@ -34,7 +34,8 @@ function Auth(_ref) {
     theme = 'default',
     localization = {
       lang: 'en'
-    }
+    },
+    onSignUp
   } = _ref;
 
   /**
@@ -150,7 +151,8 @@ function Auth(_ref) {
     magicLink,
     showLinks,
     i18n,
-    appearance
+    appearance,
+    onSignUp
   };
   /**
    * View handler, displays the correct Auth view

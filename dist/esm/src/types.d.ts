@@ -84,6 +84,7 @@ export interface Auth {
     };
     appearance?: Appearance;
     theme?: 'default' | string;
+    onSignUp?: () => void;
 }
 export declare type I18nVariables = {
     sign_up?: {

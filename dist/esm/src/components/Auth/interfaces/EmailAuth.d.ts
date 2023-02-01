@@ -14,7 +14,8 @@ export interface EmailAuthProps {
     magicLink?: boolean;
     i18n: I18nVariables;
     appearance?: Appearance;
+    onSignUp?: () => void;
 }
-declare function EmailAuth({ authView, defaultEmail, defaultPassword, setAuthView, setDefaultEmail, setDefaultPassword, supabaseClient, showLinks, redirectTo, magicLink, i18n, appearance, }: EmailAuthProps): JSX.Element;
+declare function EmailAuth({ authView, defaultEmail, defaultPassword, setAuthView, setDefaultEmail, setDefaultPassword, supabaseClient, showLinks, redirectTo, magicLink, i18n, appearance, onSignUp, }: EmailAuthProps): JSX.Element;
 export { EmailAuth };
 //# sourceMappingURL=EmailAuth.d.ts.map
