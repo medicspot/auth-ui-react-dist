@@ -70,10 +70,6 @@ function EmailAuth(_ref) {
         break;
 
       case 'sign_up':
-        console.log('We are here');
-        console.log({
-          redirectTo
-        });
         let signUp;
 
         if (redirectTo) {
