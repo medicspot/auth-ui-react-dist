@@ -18,7 +18,7 @@ var sign_in = {
 	password_input_placeholder: "Your password",
 	button_label: "サインイン",
 	social_provider_text: "に登録する",
-	link_text: "Already have an account? Sign in"
+	link_text: "Back to sign in"
 };
 var magic_link = {
 	email_input_label: "Email address",

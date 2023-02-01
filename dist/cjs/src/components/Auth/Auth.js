@@ -102,6 +102,7 @@ function Auth(_ref) {
 
   const Container = _ref2 => {
     let {
+      title,
       children
     } = _ref2;
 
@@ -112,7 +113,13 @@ function Auth(_ref) {
         className: theme !== 'default' ? core.createTheme(utils.merge( // @ts-ignore
         appearance === null || appearance === void 0 ? void 0 : appearance.theme[theme], (_b = (_a = appearance === null || appearance === void 0 ? void 0 : appearance.variables) === null || _a === void 0 ? void 0 : _a[theme]) !== null && _b !== void 0 ? _b : {})) : ''
       }, {
-        children: [SignView && jsxRuntime.jsx(SocialAuth.SocialAuth, {
+        children: [title && jsxRuntime.jsx("div", {
+          children: jsxRuntime.jsx("h1", Object.assign({
+            className: "mx-auto mb-8 max-w-[555px] text-center md:mb-[40px]"
+          }, {
+            children: title
+          }))
+        }), SignView && jsxRuntime.jsx(SocialAuth.SocialAuth, {
           appearance: appearance,
           supabaseClient: supabaseClient,
           providers: providers,
@@ -152,14 +159,18 @@ function Auth(_ref) {
 
   switch (authView) {
     case constants.VIEWS.SIGN_IN:
-      return jsxRuntime.jsx(Container, {
+      return jsxRuntime.jsx(Container, Object.assign({
+        title: "Sign in"
+      }, {
         children: jsxRuntime.jsx(EmailAuth.EmailAuth, Object.assign({}, emailProp, {
           authView: 'sign_in'
         }))
-      });
+      }));
 
     case constants.VIEWS.SIGN_UP:
-      return jsxRuntime.jsx(Container, {
+      return jsxRuntime.jsx(Container, Object.assign({
+        title: "Create an account"
+      }, {
         children: jsxRuntime.jsx(EmailAuth.EmailAuth, {
           appearance: appearance,
           supabaseClient: supabaseClient,
@@ -174,10 +185,12 @@ function Auth(_ref) {
           showLinks: showLinks,
           i18n: i18n
         })
-      });
+      }));
 
     case constants.VIEWS.FORGOTTEN_PASSWORD:
-      return jsxRuntime.jsx(Container, {
+      return jsxRuntime.jsx(Container, Object.assign({
+        title: "Reset password"
+      }, {
         children: jsxRuntime.jsx(ForgottenPassword.ForgottenPassword, {
           appearance: appearance,
           supabaseClient: supabaseClient,
@@ -186,7 +199,7 @@ function Auth(_ref) {
           showLinks: showLinks,
           i18n: i18n
         })
-      });
+      }));
 
     case constants.VIEWS.MAGIC_LINK:
       return jsxRuntime.jsx(Container, {

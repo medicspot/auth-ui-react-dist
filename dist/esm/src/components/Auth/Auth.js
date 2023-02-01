@@ -98,6 +98,7 @@ function Auth(_ref) {
 
   const Container = _ref2 => {
     let {
+      title,
       children
     } = _ref2;
 
@@ -108,7 +109,13 @@ function Auth(_ref) {
         className: theme !== 'default' ? createTheme(merge( // @ts-ignore
         appearance === null || appearance === void 0 ? void 0 : appearance.theme[theme], (_b = (_a = appearance === null || appearance === void 0 ? void 0 : appearance.variables) === null || _a === void 0 ? void 0 : _a[theme]) !== null && _b !== void 0 ? _b : {})) : ''
       }, {
-        children: [SignView && jsx(SocialAuth, {
+        children: [title && jsx("div", {
+          children: jsx("h1", Object.assign({
+            className: "mx-auto mb-8 max-w-[555px] text-center md:mb-[40px]"
+          }, {
+            children: title
+          }))
+        }), SignView && jsx(SocialAuth, {
           appearance: appearance,
           supabaseClient: supabaseClient,
           providers: providers,
@@ -148,14 +155,18 @@ function Auth(_ref) {
 
   switch (authView) {
     case VIEWS.SIGN_IN:
-      return jsx(Container, {
+      return jsx(Container, Object.assign({
+        title: "Sign in"
+      }, {
         children: jsx(EmailAuth, Object.assign({}, emailProp, {
           authView: 'sign_in'
         }))
-      });
+      }));
 
     case VIEWS.SIGN_UP:
-      return jsx(Container, {
+      return jsx(Container, Object.assign({
+        title: "Create an account"
+      }, {
         children: jsx(EmailAuth, {
           appearance: appearance,
           supabaseClient: supabaseClient,
@@ -170,10 +181,12 @@ function Auth(_ref) {
           showLinks: showLinks,
           i18n: i18n
         })
-      });
+      }));
 
     case VIEWS.FORGOTTEN_PASSWORD:
-      return jsx(Container, {
+      return jsx(Container, Object.assign({
+        title: "Reset password"
+      }, {
         children: jsx(ForgottenPassword, {
           appearance: appearance,
           supabaseClient: supabaseClient,
@@ -182,7 +195,7 @@ function Auth(_ref) {
           showLinks: showLinks,
           i18n: i18n
         })
-      });
+      }));
 
     case VIEWS.MAGIC_LINK:
       return jsx(Container, {
