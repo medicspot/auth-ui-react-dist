@@ -181,7 +181,8 @@ function Auth(_ref) {
           redirectTo: redirectTo,
           magicLink: magicLink,
           showLinks: showLinks,
-          i18n: i18n
+          i18n: i18n,
+          onSignUp: onSignUp
         })
       }));
 
