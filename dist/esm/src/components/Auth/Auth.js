@@ -111,7 +111,7 @@ function Auth(_ref) {
       }, {
         children: [title && jsx("div", {
           children: jsx("h1", Object.assign({
-            className: "mx-auto mb-8 max-w-[555px] text-center md:mb-[40px]"
+            className: "t-36 mx-auto mb-8 max-w-[555px] text-darkNavy text-center md:mb-[40px]"
           }, {
             children: title
           }))
